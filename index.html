@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .calculator {
+            margin: 50px auto;
+            max-width: 300px;
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .display {
+            background-color: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 24px;
+            text-align: right;
+        }
+        button {
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="display" id="result">0</div>
+        <button onclick="addToDisplay('1')">1</button>
+        <button onclick="addToDisplay('2')">2</button>
+        <button onclick="addToDisplay('3')">3</button>
+        <button onclick="addToDisplay('+')">+</button>
+        <br>
+        <button onclick="addToDisplay('4')">4</button>
+        <button onclick="addToDisplay('5')">5</button>
+        <button onclick="addToDisplay('6')">6</button>
+        <button onclick="addToDisplay('-')">-</button>
+        <br>
+        <button onclick="addToDisplay('7')">7</button>
+        <button onclick="addToDisplay('8')">8</button>
+        <button onclick="addToDisplay('9')">9</button>
+        <button onclick="addToDisplay('*')">*</button>
+        <br>
+        <button onclick="addToDisplay('0')">0</button>
+        <button onclick="clearDisplay()">C</button>
+        <button onclick="calculate()">=</button>
+        <button onclick="addToDisplay('/')">/</button>
+    </div>
+
+    <script>
+        let display = document.getElementById('result');
+        let expression = '';
+
+        function addToDisplay(value) {
+            expression += value;
+            display.textContent = expression;
+        }
+
+        function clearDisplay() {
+            expression = '';
+            display.textContent = '0';
+        }
+
+        function calculate() {
+            try {
+                const result = eval(expression);
+                display.textContent = result;
+                expression = result.toString();
+            } catch (error) {
+                display.textContent = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
+
+
